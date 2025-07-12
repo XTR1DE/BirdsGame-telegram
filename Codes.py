@@ -1,0 +1,9 @@
+adminkey = "2a290f2beee6f91ae2039d9bd6094cbc"
+balance_add = 'abaa619dead4f9c9915aa200b417570fbd2ec8a857f03c933f863daaf7bca259'
+greenbird = '472c809381612c995e4ca8d8b055f0ac'
+yellowbird = '74be16979710d4c4e7c6647856088456'
+bluebird = 'WWpRNFlqUmxOamt6TWpoaVpXTTJNakpoTkRnMk1HWXhZakUwTXpVME9XVmxZVEUxTm1RME1nPT0='
+brownbird = 'V1c1S2RtUXlOMUYyT1VkRE1FeHFVbWc1UXpZd1RFRTk='
+infoplayer = 'aW5mb9C+0L/QtdGA0YHQvtC90LDQtg=='
+say = 'aW5mb9C+0L/'
+sayto = 'sayto'
