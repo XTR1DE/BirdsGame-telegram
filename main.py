@@ -31,6 +31,7 @@ def chat_send(message):
         return
 
     if message.text == "Играть" or message.text == "/start":
+
         bot.send_message(message.chat.id, "<b>'🍖Для того, чтобы уже начать заработать, нужно купить птиц. "
                                           "\nПтицы, которые принесут вам яйца(тоны): "
                                           "\n0.2 TON (+0.2)"
@@ -40,17 +41,22 @@ def chat_send(message):
                                           "\n3 TON (+1)"
                                           "\n5 TON (+1.75)"
                                           "\n💸Чтобы пополнить баланс, необходимо нажать на кнопку Баланс'</b>", parse_mode="html", reply_markup=keyboard)
+
         markup = types.InlineKeyboardMarkup()
         for i in BirdsData.Birdtypes.values():
-            markup.add(types.InlineKeyboardButton(f"{i.name} птица - {i.productivity} яиц в час - цена {i.price} Ton", url=i.url))
+            markup.add(types.InlineKeyboardButton(f"{i.name} птица - {i.productivity} яиц в час - цена {i.price} Ton",url=i.url))
+
+        bot.send_message(message.chat.id,f"<b>Нужно купить птиц, чтобы они несли яйца</b>", parse_mode="html",reply_markup=markup)
 
     elif message.text == "Баланс":
+        birdsinfo = ''
+        for i in BirdsData.Birdtypes.keys():
+            birdsinfo += f"\n<b>{i} птиц: {len(list(filter(lambda x: x['name'] == i, DataBase.info('birds', message.chat.id))))}</b>"
+
+
         bot.send_message(message.chat.id, f'<b>Ваш текущий баланс: {int(DataBase.info("eggs", message.chat.id))} eggs</b>'
                                           f"\n<b>Количество ваших птиц: {len(DataBase.info('birds', message.chat.id))}</b>"
-                                          f"\n<b>Зеленые птиц: {len(list(filter(lambda x: x['name'] == 'green', DataBase.info('birds', message.chat.id))))}</b>"
-                                          f"\n<b>Желтые птиц: {len(list(filter(lambda x: x['name'] == 'yellow', DataBase.info('birds', message.chat.id))))}</b>"
-                                          f"\n<b>Коричневые птиц: {len(list(filter(lambda x: x['name'] == 'brown', DataBase.info('birds', message.chat.id))))}</b>"
-                                          f"\n<b>Синие птиц: {len(list(filter(lambda x: x['name'] == 'blue', DataBase.info('birds', message.chat.id))))}</b>", parse_mode="html", reply_markup=keyboard)
+                                          f"{birdsinfo}", parse_mode="html", reply_markup=keyboard)
 
     elif message.text == 'Привязать кошелек':
         pass
