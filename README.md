@@ -19,7 +19,7 @@ BirdsGame-Telegram - это Telegram-бот игра, в которой игро
 
 ## Установка зависимостей:
 ```bash
-pip install python-dotenv pyTelegramBotAPI
+pip install python-dotenv pyTelegramBotAPI asyncio
 ```
 
 ## Настройка и запуск:
